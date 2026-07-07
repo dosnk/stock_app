@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  stock-builder:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: stock-builder:latest
+    container_name: stock-builder
+    # 挂载源码目录到 /app
+    # 请修改 /path/to/your/stock_app 为实际源码路径
+    volumes:
+      - /vol1/@apphome/trim.openclaw/data/workspace/stock_app:/app
+    # 编译完成后自动退出
+    stdin_open: false
+    tty: false
+    # 日志自动输出到 docker logs
